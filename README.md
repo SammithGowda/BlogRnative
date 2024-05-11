@@ -1,2 +1,0 @@
-# BlogRnative
-Simple Blog app
