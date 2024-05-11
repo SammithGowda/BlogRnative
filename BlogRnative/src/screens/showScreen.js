@@ -14,11 +14,11 @@ const ShowScreen = ({ navigation }) => {
     );
 };
 
-ShowScreen.navigationOptions = ({ naviation }) => {
+ShowScreen.navigationOptions = ({ navigation }) => {
     return {
         headerRight: () => (
-            <TouchableOpacity onPress={()=>naviation.navigate("edit")}>
-                <Entypo name='edit' size={30}/>
+            <TouchableOpacity onPress={() => navigation.navigate("edit",{id:navigation.getParam("id")})}>
+                <Entypo name='edit' size={30} />
             </TouchableOpacity>
         )
     }
