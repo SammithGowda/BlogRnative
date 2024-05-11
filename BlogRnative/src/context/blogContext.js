@@ -1,19 +1,22 @@
-import createDataContext from "./createDataContext";
+import createDataContext from './createDataContext';
 
-const initState = [];
+const blogReducer = (state, action) => {
+  switch (action.type) {
+    case 'add_blogpost':
+      return [...state, { title: `Blog Post #${state.length + 1}` }];
+    default:
+      return state;
+  }
+};
 
-const blogReducer = (state, { type, payload }) => {
-    switch (type) {
-        case "add_blog":
-            return [...state, { title: `Blog post #${state.length}` }];
+const addBlogPost = dispatch => {
+  return () => {
+    dispatch({ type: 'add_blogpost' });
+  };
+};
 
-        default:
-            return state;
-    }
-}
-
-const updateBlogPost = () => {
-    dispatch({ type: "add_blog" })
-}
-
-export const { Context, Provider } = createDataContext(blogReducer, { updateBlogPost }, initState)
+export const { Context, Provider } = createDataContext(
+  blogReducer,
+  { addBlogPost },
+  []
+);
